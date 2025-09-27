@@ -19,41 +19,40 @@ const steps = [
   },
   {
     icon: <FileText className="w-5 h-5 text-white" />,
-    title: "STEP 02: Brainstorm Meeting",
+    title: "STEP 02: Sample Project",
     description:
       "We create a sample section to align with your expectations and style.",
   },
   {
     icon: <PenTool className="w-5 h-5 text-white" />,
-    title: "STEP 03: Brainstorm Meeting",
-    description:
-      "Our team develops the complete documents with attention to details.",
+    title: "STEP 03: Project Work",
+    description: "We develop the complete documents with attention to details.",
   },
   {
     icon: <CheckCircle className="w-5 h-5 text-white" />,
-    title: "STEP 04: Brainstorm Meeting",
+    title: "STEP 04: Revision & Demos",
     description:
-      "You receive the polished, professional documents ready for use.",
+      "We incorporate your feedback and refine the document to perfection.",
   },
   {
     icon: <Presentation className="w-5 h-5 text-white" />,
-    title: "STEP 05: Brainstorm Meeting",
+    title: "STEP 05: Final Demos",
     description: "We present the completed documents for your final approval.",
   },
   {
     icon: <RefreshCcw className="w-5 h-5 text-white" />,
-    title: "STEP 06: Brainstorm Meeting",
+    title: "STEP 06: Final Documents",
     description:
-      "We incorporate your feedback and refine the document to perfection.",
+      "You receive the polished, professional documents ready for use.",
   },
 ];
 
 const Process = () => {
   return (
-    <section className="py-20 px-6 lg:px-20 bg-white">
+    <section className="py-20 px-6 bg-white">
       {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+      <div className="text-center max-w-2xl mx-auto mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
           Our Simple 6–Step Process
         </h2>
         <p className="text-gray-600 text-sm sm:text-base">
@@ -62,8 +61,8 @@ const Process = () => {
         </p>
       </div>
 
-      {/* Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      {/* -------- Desktop View (with dashed arrows) -------- */}
+      <div className="hidden lg:grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left Side Image */}
         <div className="flex justify-center">
           <img
@@ -91,7 +90,7 @@ const Process = () => {
                   {step.description}
                 </p>
 
-                {/* Dash Arrow (only between steps, not after last) */}
+                {/* Dashed Arrow (only between steps) */}
                 {index < steps.length - 1 && (
                   <img
                     src={dashArrow}
@@ -103,6 +102,39 @@ const Process = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* -------- Mobile View (zig-zag with solid line) -------- */}
+      <div className="lg:hidden relative flex flex-col items-center">
+        {/* Solid Blue Vertical Line */}
+        <div className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-1 bg-blue-600"></div>
+
+        {/* Steps */}
+        {steps.map((step, index) => (
+          <div
+            key={index}
+            className={`relative flex w-full mb-12 ${
+              index % 2 === 0 ? "justify-start" : "justify-end"
+            }`}
+          >
+            {/* Step content box */}
+            <div className="w-1/2 px-4">
+              <div className="bg-white shadow-md rounded-lg p-4">
+                <h3 className="text-sm font-bold text-gray-900 mb-1">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+
+            {/* Step Icon on Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 shadow-md z-10">
+              {step.icon}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

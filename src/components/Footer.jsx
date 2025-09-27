@@ -24,57 +24,57 @@ const Footer = () => {
       </section>
 
       {/* Footer Section */}
-      <footer className="bg-[#101828] text-white py-12 px-4">
+      <footer className="bg-[#101828] text-white py-8 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-6 md:gap-8">
             {/* Company Info */}
             <div>
-              <h3 className="text-xl font-bold text-[#004AAD] mb-4">
+              <h3 className="text-base md:text-xl font-bold text-[#004AAD] mb-3 md:mb-4">
                 QuickDocs Sri Lanka
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                Your trusted partner for professional business documents. We
-                combine MBA-level expertise with fast delivery to help your
-                business succeed.
+              <p className="text-gray-300 mb-4 md:mb-6 leading-relaxed text-xs md:text-base">
+                Expert business documents — MBA insight, fast delivery.
               </p>
 
               {/* Social Icons */}
-              <div className="flex gap-4">
+              <div className="flex gap-2 md:gap-4">
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
                 >
-                  <Facebook className="w-5 h-5" />
+                  <Facebook className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
                 >
-                  <Twitter className="w-5 h-5" />
+                  <Twitter className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
                 >
-                  <Instagram className="w-5 h-5" />
+                  <Instagram className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               </div>
             </div>
 
             {/* Our Services */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Our Services</h4>
-              <ul className="space-y-3">
+              <h4 className="text-sm md:text-lg font-semibold mb-3 md:mb-6 text-white">
+                Our Services
+              </h4>
+              <ul className="space-y-2 md:space-y-3">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Business Proposals
                   </a>
@@ -82,15 +82,15 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
-                    Project Reports
+                    Project Report
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Company Profiles
                   </a>
@@ -98,7 +98,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Pitch Decks
                   </a>
@@ -106,7 +106,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Investor Documents
                   </a>
@@ -114,7 +114,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Research Documents
                   </a>
@@ -124,12 +124,14 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
-              <ul className="space-y-3">
+              <h4 className="text-sm md:text-lg font-semibold mb-3 md:mb-6 text-white">
+                Quick Links
+              </h4>
+              <ul className="space-y-2 md:space-y-3">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Home
                   </a>
@@ -137,7 +139,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Services
                   </a>
@@ -145,15 +147,15 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
-                    Why Choose Us
+                    Why Choose us
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Process
                   </a>
@@ -161,7 +163,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     FAQs
                   </a>
@@ -169,7 +171,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                   >
                     Contact Us
                   </a>
@@ -179,9 +181,9 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="border-t border-gray-800 mt-12 pt-8">
-            <p className="text-gray-400 text-sm">
-              © 2024 QuickDocs Sri Lanka. All rights reserved.
+          <div className="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8">
+            <p className="text-gray-400 text-xs md:text-sm">
+              © 2025 QuickDocs Sri Lanka. All rights reserved.
             </p>
           </div>
         </div>

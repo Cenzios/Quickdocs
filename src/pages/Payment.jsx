@@ -1,5 +1,6 @@
 import React from "react";
 import { CreditCard, CheckCircle } from "lucide-react";
+import mobile from "../assets/mobile.png";
 
 const Payment = () => {
   return (
@@ -16,8 +17,17 @@ const Payment = () => {
           </p>
         </div>
 
+        {/* Mobile Illustration - Only on mobile */}
+        <div className="md:hidden flex justify-center mb-8">
+          <img
+            src={mobile}
+            alt="Payment Illustration"
+            className="w-64 h-40 object-contain"
+          />
+        </div>
+
         {/* Payment Options */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Advance Payment Option */}
           <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
             <div className="text-center mb-6">

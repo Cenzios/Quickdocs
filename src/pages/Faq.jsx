@@ -47,12 +47,27 @@ const Faq = () => {
           <h2 className="text-3xl font-bold text-black mb-4">
             Frequently Asked Questions
           </h2>
+          {/* Mobile subtitle */}
+          <p className="lg:hidden text-gray-600 text-sm">
+            Find solutions to your top questions
+          </p>
+        </div>
+
+        {/* Mobile Illustration - Only on mobile */}
+        <div className="lg:hidden flex justify-center mb-8">
+          <div className="w-64 h-48">
+            <img
+              src={amico}
+              alt="FAQ Illustration"
+              className="w-full h-full object-contain"
+            />
+          </div>
         </div>
 
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - FAQ Accordion */}
-          <div>
+          <div className="order-2 lg:order-1">
             <div className="space-y-6 -mt-8">
               <hr className="border-t border-gray-300 my-4" />
               {faqData.map((item, index) => (
@@ -99,8 +114,8 @@ const Faq = () => {
             </div>
           </div>
 
-          {/* Right Side - Illustration */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right Side - Illustration - Only on desktop */}
+          <div className="hidden lg:flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="w-96 h-96 flex items-center justify-center">
               <img
                 src={amico}

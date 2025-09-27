@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { GraduationCap, Sparkles, Target, Clock } from "lucide-react";
 import Group from "../assets/Group.png";
 import BlueArrow from "../assets/BlueArrow.png";
 
 const ChooseUs = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const features = [
+    {
+      icon: GraduationCap,
+      title: "MBA-Level Expertise",
+      description:
+        "Our team brings advanced business knowledge and strategic thinking to every document.",
+    },
+    {
+      icon: Sparkles,
+      title: "Clarity & Impact",
+      description:
+        "Clear communication that drives results and achieves your goals.",
+    },
+    {
+      icon: Target,
+      title: "Tailored Documents",
+      description:
+        "Every document is customized to your specific industry, audience, and objectives.",
+    },
+    {
+      icon: Clock,
+      title: "Fast Delivery",
+      description:
+        "Quick turnaround times without compromising on quality or attention to details.",
+    },
+  ];
+
   return (
     <section
       id="choose-us"
@@ -22,7 +51,57 @@ const ChooseUs = () => {
           </p>
         </div>
 
-        {/* Main Content */}
+        {/* Mobile Layout - Carousel */}
+        <div className="lg:hidden">
+          {/* Illustration */}
+          <div className="flex justify-center mb-8">
+            <img
+              src={Group}
+              alt="QuickDocs Team"
+              className="w-64 h-48 object-contain"
+            />
+          </div>
+
+          {/* Current Card */}
+          <div className="px-6 mb-8">
+            <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
+              {/* Icon */}
+              <div className="flex justify-center mb-4">
+                <div className="bg-blue-600 p-3 rounded-xl">
+                  {React.createElement(features[currentSlide].icon, {
+                    className: "w-6 h-6 text-white",
+                  })}
+                </div>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {features[currentSlide].title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {features[currentSlide].description}
+              </p>
+            </div>
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="flex justify-center gap-2">
+            {features.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === currentSlide ? "bg-blue-600" : "bg-gray-300"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Layout - Your Original Code */}
         <div className="hidden lg:block relative h-[600px] w-full">
           {/* Central Image */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
