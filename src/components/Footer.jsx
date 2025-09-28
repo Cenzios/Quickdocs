@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Phone, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import callImg from "../assets/call.png"; // adjust path if needed
 
 const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
       {/* Call to Action Section */}
@@ -16,12 +19,54 @@ const Footer = () => {
             Ready to take your business documents to the next level? Let's
             discuss your project.
           </p>
-          <button className="bg-white text-blue-700 px-8 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-white text-blue-700 px-8 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+          >
             <Phone className="w-5 h-5" />
             Call Us Now
           </button>
         </div>
       </section>
+
+      {/* Popup Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm z-50"
+          onClick={() => setIsModalOpen(false)} // close if clicking outside
+        >
+          <div
+            className="bg-white rounded-2xl p-6 w-96 text-center shadow-lg"
+            onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+          >
+            <img
+              src={callImg}
+              alt="Call illustration"
+              className="w-32 h-32 mx-auto mb-4"
+            />
+            <h3 className="text-xl text-black font-bold mb-2">
+              Have questions ?
+            </h3>
+            <p className="text-gray-600 mb-6">We're here to help !</p>
+            <div className="flex justify-center gap-4">
+              <a
+                href="https://wa.me/94771234567" // replace with your WhatsApp number
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Open WhatsApp
+              </a>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer Section */}
       <footer className="bg-[#101828] text-white py-8 px-4">
@@ -33,7 +78,9 @@ const Footer = () => {
                 QuickDocs Sri Lanka
               </h3>
               <p className="text-gray-300 mb-4 md:mb-6 leading-relaxed text-xs md:text-base">
-                Expert business documents — MBA insight, fast delivery.
+                Your trusted partner for professional business documents. We
+                combine MBA-level expertise with fast delivery to help your
+                business succeed
               </p>
 
               {/* Social Icons */}
