@@ -149,12 +149,12 @@ const ContactUs = () => {
               </div>
             </div>
             {/* Right Side - Contact Illustration */}
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="w-96 h-96 flex items-center justify-center">
+            <div className="order-1 lg:order-2 flex justify-center lg:justify-end ">
+              <div className="w-96 h-96 flex items-center justify-center ">
                 <img
                   src={Group2}
                   alt="Contact Illustration"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain mt-10"
                 />
               </div>
             </div>

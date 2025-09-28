@@ -20,22 +20,20 @@ const Faq = () => {
     {
       question: "How long does it take to complete a project?",
       answer:
-        "Project timelines vary depending on complexity and scope. Typically, simple documents take 3-5 business days, while comprehensive projects may take 1-2 weeks.",
+        "depends with the scope of the project. But you will be noted about the delivery date before the project initiation.",
     },
     {
       question: "What is the payment process?",
       answer:
-        "We require 50% payment upfront to begin the project, with the remaining 50% due upon completion and delivery of the final documents.",
+        "The payment process is divided into three stages: 40% after the sample project document, 40% after the first meeting for the final document, and 20% upon final delivery.",
     },
     {
       question: "Will I get editable files?",
-      answer:
-        "Yes, you will receive both PDF versions and editable source files (Word, PowerPoint, etc.) so you can make future modifications as needed.",
+      answer: "Yes, Editable files can be shared upon request",
     },
     {
       question: "Can I request multiple revisions?",
-      answer:
-        "We include up to 3 rounds of revisions in our standard package. Additional revisions can be accommodated for a nominal fee.",
+      answer: "Yes. Your revision time is unlimited.",
     },
   ];
 

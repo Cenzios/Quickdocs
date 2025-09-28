@@ -13,18 +13,20 @@ const Services = () => {
     {
       icon: FileText,
       title: "Business Proposals",
-      description: "Client-winning proposals with polished formatting",
+      description:
+        "Complete proposals that win clients and secure contracts with professional formatting.",
     },
     {
       icon: BarChart3,
       title: "Project Reports",
-      description: "Data-driven project reports with actionable insights",
+      description:
+        "Comprehensive project reports with data analysis, insights, and clear recommendations.",
     },
     {
       icon: Building2,
       title: "Company Profiles",
       description:
-        "Company profiles that highlight your brand and capabilities",
+        "Professional company profiles that showcases your brand, values, and capabilities",
     },
     {
       icon: Presentation,
@@ -35,12 +37,14 @@ const Services = () => {
     {
       icon: DollarSign,
       title: "Investor Documents",
-      description: "Investor documents featuring business plans and financials",
+      description:
+        "Detailed investor documents including business plans and financial projections",
     },
     {
       icon: BookOpen,
       title: "Research-Based Documents",
-      description: "Expertly crafted, research-driven documents",
+      description:
+        "Well-researched documents backed by industry and market analysis",
     },
   ];
 
