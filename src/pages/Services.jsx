@@ -7,6 +7,31 @@ import {
   DollarSign,
   BookOpen,
 } from "lucide-react";
+import { motion } from "framer-motion";
+
+// Animation variants
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2, // delay between each card
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+    },
+  },
+};
 
 const Services = () => {
   const services = [
@@ -52,7 +77,13 @@ const Services = () => {
     <section id="services" className="min-h-screen py-20 bg-gray-50">
       <div className="w-full max-w-[1400px] mx-auto px-4 md:px-10">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
             Why Choose QuickDocs ?
           </h2>
@@ -60,22 +91,32 @@ const Services = () => {
             We combine expertise, customization, and efficiency to deliver
             exceptional results.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Desktop Grid - 3 columns on large screens, 2 on medium */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Desktop Grid */}
+        <motion.div
+          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={cardVariants}
                 className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg duration-300 text-center group hover:scale-105 transform transition-all border border-gray-100"
               >
                 {/* Icon */}
                 <div className="flex justify-center mb-6">
-                  <div className="p-4 bg-blue-50 rounded-2xl">
+                  <motion.div
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    className="p-4 bg-blue-50 rounded-2xl"
+                  >
                     <IconComponent className="w-8 h-8 text-blue-600" />
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Title */}
@@ -87,25 +128,35 @@ const Services = () => {
                 <p className="text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Mobile Layout - 2-column grid exactly like the image */}
-        <div className="md:hidden grid grid-cols-2 gap-4">
+        {/* Mobile Layout */}
+        <motion.div
+          className="md:hidden grid grid-cols-2 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={cardVariants}
                 className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 text-center"
               >
                 {/* Icon */}
                 <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-blue-50 rounded-xl">
+                  <motion.div
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    className="p-3 bg-blue-50 rounded-xl"
+                  >
                     <IconComponent className="w-6 h-6 text-blue-600" />
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Title */}
@@ -117,10 +168,10 @@ const Services = () => {
                 <p className="text-gray-600 text-xs leading-relaxed">
                   {service.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

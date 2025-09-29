@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
-import { Menu, X } from "lucide-react"; // Hamburger & close icons
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -48,38 +49,61 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [navItems]);
 
+  const linkVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.1, duration: 0.4, ease: "easeOut" },
+    }),
+  };
+
   return (
-    <header className="fixed top-0 w-full bg-[#0A51B0] z-50 ">
+    <motion.header
+      className="fixed top-0 w-full bg-[#0A51B0] z-50"
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="w-full max-w-[1400px] mx-auto flex justify-between items-center px-6 lg:px-12 py-4">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <motion.div
+          className="flex items-center gap-3"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <img src={logo} alt="Logo" className="w-8 h-8" />
           <div className="text-white">
             <div className="font-semibold text-lg">Quick Docs</div>
             <div className="text-xs text-blue-200">Sri Lanka</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
+          {navItems.map((item, i) => (
+            <motion.a
               key={item}
               href={`#${item}`}
-              className={`text-white hover:text-blue-400 transition-colors pb-1 ${
-                activeLink === item ? "border-b-2 border-white" : ""
-              }`}
+              custom={i}
+              initial="hidden"
+              animate="visible"
+              variants={linkVariants}
+              className={`relative text-white hover:text-blue-300 transition-colors pb-1 ${
+                activeLink === item ? "after:w-full" : "after:w-0"
+              } after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-white after:transition-all after:duration-300`}
             >
               {item.charAt(0).toUpperCase() + item.slice(1).replace("-", " ")}
-            </a>
+            </motion.a>
           ))}
         </nav>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden flex items-center">
+        {/* Mobile Hamburger / Cross */}
+        <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-white"
+            className="text-white z-50 relative"
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -87,35 +111,50 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#0A51B0] shadow-lg transform transition-transform duration-300 z-40 ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col mt-24 ml-6 gap-6 text-white">
-          {navItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item}`}
-              onClick={() => setIsMobileMenuOpen(false)} // close menu on click
-              className={`text-lg hover:text-blue-300 transition-colors ${
-                activeLink === item ? "font-bold underline" : "font-medium"
-              }`}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              className="fixed top-0 right-0 h-full w-64 bg-[#0A51B0] z-40 flex flex-col pt-24 pl-6 gap-6 text-white"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1).replace("-", " ")}
-            </a>
-          ))}
-        </div>
-      </div>
+              {navItems.map((item, i) => (
+                <motion.a
+                  key={item}
+                  href={`#${item}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  custom={i}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`text-lg hover:text-blue-300 transition-colors ${
+                    activeLink === item
+                      ? "font-bold underline underline-offset-4"
+                      : "font-medium"
+                  }`}
+                >
+                  {item.charAt(0).toUpperCase() +
+                    item.slice(1).replace("-", " ")}
+                </motion.a>
+              ))}
+            </motion.div>
 
-      {/* Overlay when mobile menu is open */}
-      {isMobileMenuOpen && (
-        <div
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="fixed inset-0 bg-black/50 z-30"
-        ></div>
-      )}
-    </header>
+            {/* Overlay */}
+            <motion.div
+              className="fixed inset-0 bg-black/50 z-30"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+          </>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 

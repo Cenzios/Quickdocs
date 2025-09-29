@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import amico from "../assets/amico.png";
 
 const Faq = () => {
@@ -20,7 +21,7 @@ const Faq = () => {
     {
       question: "How long does it take to complete a project?",
       answer:
-        "depends with the scope of the project. But you will be noted about the delivery date before the project initiation.",
+        "Depends on the scope of the project. You will be notified about the delivery date before the project initiation.",
     },
     {
       question: "What is the payment process?",
@@ -29,7 +30,7 @@ const Faq = () => {
     },
     {
       question: "Will I get editable files?",
-      answer: "Yes, Editable files can be shared upon request",
+      answer: "Yes, editable files can be shared upon request.",
     },
     {
       question: "Can I request multiple revisions?",
@@ -41,18 +42,29 @@ const Faq = () => {
     <section id="faqs" className="bg-blue-50 py-20 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl font-bold text-black mb-4">
             Frequently Asked Questions
           </h2>
-          {/* Mobile subtitle */}
           <p className="lg:hidden text-gray-600 text-sm">
             Find solutions to your top questions
           </p>
-        </div>
+        </motion.div>
 
         {/* Mobile Illustration - Only on mobile */}
-        <div className="lg:hidden flex justify-center mb-8">
+        <motion.div
+          className="lg:hidden flex justify-center mb-8"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: "backOut" }}
+          viewport={{ once: true }}
+        >
           <div className="w-64 h-48">
             <img
               src={amico}
@@ -60,12 +72,18 @@ const Faq = () => {
               className="w-full h-full object-contain"
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - FAQ Accordion */}
-          <div className="order-2 lg:order-1">
+          <motion.div
+            className="order-2 lg:order-1"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <div className="space-y-6 -mt-8">
               <hr className="border-t border-gray-300 my-4" />
               {faqData.map((item, index) => (
@@ -77,31 +95,48 @@ const Faq = () => {
                     <h3 className="text-lg font-semibold text-gray-900 pr-4">
                       {item.question}
                     </h3>
-                    <div className="flex-shrink-0">
+                    <motion.div
+                      animate={{ rotate: openItems.includes(index) ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0"
+                    >
                       {openItems.includes(index) ? (
                         <Minus className="w-5 h-5 text-gray-600" />
                       ) : (
                         <Plus className="w-5 h-5 text-gray-600" />
                       )}
-                    </div>
+                    </motion.div>
                   </button>
 
-                  {openItems.includes(index) && (
-                    <div className="pl-1">
-                      <p className="text-gray-600 leading-relaxed">
-                        {item.answer}
-                      </p>
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {openItems.includes(index) && (
+                      <motion.div
+                        className="pl-1"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      >
+                        <p className="text-gray-600 leading-relaxed">
+                          {item.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                  {/* gray separator */}
                   <hr className="border-t border-gray-300 my-4" />
                 </div>
               ))}
             </div>
 
             {/* Contact Section */}
-            <div className="mt-10 pt-6">
+            <motion.div
+              className="mt-10 pt-6"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <p className="text-sm text-gray-600 mb-2">Ask any questions</p>
               <a
                 href="mailto:info@quickdocs.lk"
@@ -109,11 +144,17 @@ const Faq = () => {
               >
                 info@quickdocs.lk
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Side - Illustration - Only on desktop */}
-          <div className="hidden lg:flex justify-center lg:justify-end order-1 lg:order-2">
+          <motion.div
+            className="hidden lg:flex justify-center lg:justify-end order-1 lg:order-2"
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <div className="w-96 h-96 flex items-center justify-center">
               <img
                 src={amico}
@@ -121,7 +162,7 @@ const Faq = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

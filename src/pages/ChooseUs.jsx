@@ -1,7 +1,29 @@
 import React, { useState } from "react";
 import { GraduationCap, Sparkles, Target, Clock } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Group from "../assets/Group.png";
 import BlueArrow from "../assets/BlueArrow.png";
+
+// Variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  show: (direction) => ({
+    opacity: 1,
+    scale: 1,
+    x: direction === "left" ? -50 : direction === "right" ? 50 : 0,
+    y: direction === "top" ? -50 : direction === "bottom" ? 50 : 0,
+    transition: { type: "spring", stiffness: 80, damping: 15 },
+  }),
+};
 
 const ChooseUs = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -38,10 +60,15 @@ const ChooseUs = () => {
       id="choose-us"
       className="min-h-screen py-20 px-10 bg-blue-50 w-full"
     >
-      {/* Full-width container */}
       <div className="w-full px-6">
         {/* Header */}
-        <div className="text-center mb-20 max-w-[1400px] mx-auto">
+        <motion.div
+          className="text-center mb-20 max-w-[1400px] mx-auto"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl font-bold text-black mb-4">
             Why Choose QuickDocs?
           </h2>
@@ -49,44 +76,48 @@ const ChooseUs = () => {
             We combine expertise, customization, and efficiency to deliver
             exceptional results.
           </p>
-        </div>
+        </motion.div>
 
         {/* Mobile Layout - Carousel */}
         <div className="lg:hidden">
-          {/* Illustration */}
           <div className="flex justify-center mb-8">
-            <img
+            <motion.img
               src={Group}
               alt="QuickDocs Team"
               className="w-64 h-48 object-contain"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             />
           </div>
 
-          {/* Current Card */}
           <div className="px-6 mb-8">
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
-              {/* Icon */}
-              <div className="flex justify-center mb-4">
-                <div className="bg-blue-600 p-3 rounded-xl">
-                  {React.createElement(features[currentSlide].icon, {
-                    className: "w-6 h-6 text-white",
-                  })}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white rounded-2xl shadow-lg p-6 text-center"
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="bg-blue-600 p-3 rounded-xl">
+                    {React.createElement(features[currentSlide].icon, {
+                      className: "w-6 h-6 text-white",
+                    })}
+                  </div>
                 </div>
-              </div>
-
-              {/* Title */}
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                {features[currentSlide].title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {features[currentSlide].description}
-              </p>
-            </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  {features[currentSlide].title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {features[currentSlide].description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Dot Indicators */}
           <div className="flex justify-center gap-2">
             {features.map((_, index) => (
               <button
@@ -101,43 +132,81 @@ const ChooseUs = () => {
           </div>
         </div>
 
-        {/* Desktop Layout - Your Original Code */}
+        {/* Desktop Layout */}
         <div className="hidden lg:block relative h-[600px] w-full">
-          {/* Central Image */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          {/* Floating Group Image */}
+          <motion.div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
             <div className="relative">
-              <img
+              <motion.img
                 src={Group}
                 alt="QuickDocs Team"
                 className="w-70 h-65 object-cover"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
               />
 
-              {/* Curved Blue Arrows */}
-              <img
+              {/* Animated Arrows */}
+              <motion.img
                 src={BlueArrow}
                 alt="Arrow Top Left"
-                className="w-20 h-15 absolute top-10 -left-40 opacity-70 rotate-165 scale-y-[-1]"
+                className="w-20 h-15 absolute top-10 -left-40 opacity-70 rotate-[165deg] scale-y-[-1]"
+                animate={{ x: [-5, 5, -5] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
-              <img
+              <motion.img
                 src={BlueArrow}
                 alt="Arrow Top Right"
-                className="w-20 h-15 absolute top-10 -right-40 opacity-70 rotate-15"
+                className="w-20 h-15 absolute top-10 -right-40 opacity-70 rotate-[15deg]"
+                animate={{ x: [5, -5, 5] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
-              <img
+              <motion.img
                 src={BlueArrow}
                 alt="Arrow Bottom Left"
-                className="w-20 h-15 absolute bottom-5 -left-40 opacity-70 rotate-195 scale-y-[1]"
+                className="w-20 h-15 absolute bottom-5 -left-40 opacity-70 rotate-[195deg]"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
-              <img
+              <motion.img
                 src={BlueArrow}
                 alt="Arrow Bottom Right"
-                className="w-20 h-15 absolute bottom-5 -right-40 opacity-70 scale-x-[-1] rotate-165"
+                className="w-20 h-15 absolute bottom-5 -right-40 opacity-70 scale-x-[-1] rotate-[165deg]"
+                animate={{ y: [5, -5, 5] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Top Left Feature */}
-          <div className="absolute -top-6 left-1/4 transform -translate-x-1/2">
+          {/* Feature Cards with directional animations */}
+          <motion.div
+            className="absolute -top-6 left-1/4 transform -translate-x-1/2"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="show"
+            custom="top"
+            viewport={{ once: true }}
+          >
             <div className="bg-white rounded-2xl shadow-lg p-6 w-96 text-center hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-4">
                 <div className="bg-blue-600 p-4 rounded-2xl shadow-lg">
@@ -152,10 +221,16 @@ const ChooseUs = () => {
                 thinking to every document.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Top Right Feature */}
-          <div className="absolute -top-6 right-1/4 transform translate-x-1/2">
+          <motion.div
+            className="absolute -top-6 right-1/4 transform translate-x-1/2"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="show"
+            custom="right"
+            viewport={{ once: true }}
+          >
             <div className="bg-white rounded-2xl shadow-lg p-6 w-96 text-center hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-4">
                 <div className="bg-blue-600 p-4 rounded-2xl shadow-lg">
@@ -169,10 +244,16 @@ const ChooseUs = () => {
                 Clear communication that drives results and achieves your goals.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Bottom Left Feature */}
-          <div className="absolute -bottom-6 left-1/4 transform -translate-x-1/2">
+          <motion.div
+            className="absolute -bottom-6 left-1/4 transform -translate-x-1/2"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="show"
+            custom="bottom"
+            viewport={{ once: true }}
+          >
             <div className="bg-white rounded-2xl shadow-lg p-6 w-96 text-center hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-4">
                 <div className="bg-blue-600 p-4 rounded-2xl shadow-lg">
@@ -187,10 +268,16 @@ const ChooseUs = () => {
                 audience, and objectives.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Bottom Right Feature */}
-          <div className="absolute -bottom-6 right-1/4 transform translate-x-1/2">
+          <motion.div
+            className="absolute -bottom-6 right-1/4 transform translate-x-1/2"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="show"
+            custom="left"
+            viewport={{ once: true }}
+          >
             <div className="bg-white rounded-2xl shadow-lg p-6 w-96 text-center hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-4">
                 <div className="bg-blue-600 p-4 rounded-2xl shadow-lg">
@@ -205,7 +292,7 @@ const ChooseUs = () => {
                 attention to details.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
