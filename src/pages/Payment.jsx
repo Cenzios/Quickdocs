@@ -15,7 +15,7 @@ const cardVariants = {
 
 const Payment = () => {
   return (
-    <section className="bg-gray-50 py-20 px-4 relative overflow-hidden">
+    <section className="bg-gray-50 py-20 px-4 min-h-screen relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

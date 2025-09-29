@@ -39,7 +39,7 @@ const Faq = () => {
   ];
 
   return (
-    <section id="faqs" className="bg-blue-50 py-20 px-6">
+    <section id="faqs" className="bg-blue-50 py-20 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
