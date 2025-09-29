@@ -269,7 +269,7 @@ const Hero = () => {
             <motion.img
               src={arrowImage}
               alt=""
-              className="absolute -bottom-14 left-8 w-12 h-12 opacity-60 rotate-[60deg] scale-x-[-1]"
+              className="absolute -bottom-14 left-8 w-10 h-10 opacity-60 rotate-[60deg] scale-x-[-1]"
               animate={float.animate}
             />
           </motion.div>
@@ -289,7 +289,7 @@ const Hero = () => {
             <motion.img
               src={arrowImage}
               alt=""
-              className="absolute -bottom-12 right-4 w-10 h-10 opacity-60 rotate-[320deg]"
+              className="absolute -bottom-12 right-4 w-10 h-10 opacity-60 rotate-[330deg] scale-x-[-1]"
               animate={float.animate}
             />
           </motion.div>
@@ -303,7 +303,7 @@ const Hero = () => {
             <motion.img
               src={arrowImage}
               alt=""
-              className="absolute -top-15 right-18 w-10 h-10 opacity-60 rotate-[100deg]"
+              className="absolute -top-15 right-18 w-10 h-10 opacity-60 rotate-[180deg]"
               animate={float.animate}
             />
             <div className="bg-white rounded-2xl px-3 py-2 shadow-lg flex items-center gap-2">

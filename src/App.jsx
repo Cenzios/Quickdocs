@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-black text-white scroll-smooth overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white scroll-smooth overflow-y-hidden">
       <Navbar />
       <div>
         <section id="home" className="min-h-screen">
