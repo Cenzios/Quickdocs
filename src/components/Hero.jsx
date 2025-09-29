@@ -342,13 +342,14 @@ const Hero = () => {
           >
             Get Started Today
           </motion.button>
-          <motion.button
-            className="w-full border-2 border-white text-white py-3 px-6 rounded-lg font-medium text-sm"
+          <motion.a
+            href="#services"
+            className="w-full border-2 border-white text-white py-3 px-6 rounded-lg font-medium text-sm text-center block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             View Our Services
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* Line + Stats */}

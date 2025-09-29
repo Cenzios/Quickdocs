@@ -19,6 +19,34 @@ const staggerContainer = {
 };
 
 const ContactUs = () => {
+  // Contact data
+  const contacts = [
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+94 77 123 4567",
+      href: "tel:+94771234567",
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "info@quickdocs.lk",
+      href: "mailto:info@quickdocs.lk",
+    },
+    {
+      icon: Globe,
+      label: "Website",
+      value: "www.quickdocs.lk",
+      href: "https://www.quickdocs.lk",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Colombo, Sri Lanka",
+      href: null,
+    },
+  ];
+
   return (
     <section
       id="contact"
@@ -55,16 +83,7 @@ const ContactUs = () => {
                 Contact Information
               </h3>
               <div className="space-y-4">
-                {[
-                  { icon: Phone, label: "Phone", value: "+94 77 123 4567" },
-                  { icon: Mail, label: "Email", value: "info@quickdocs.lk" },
-                  { icon: Globe, label: "Website", value: "www.quickdocs.lk" },
-                  {
-                    icon: MapPin,
-                    label: "Location",
-                    value: "Colombo, Sri Lanka",
-                  },
-                ].map(({ icon: Icon, label, value }, i) => (
+                {contacts.map(({ icon: Icon, label, value, href }, i) => (
                   <motion.div
                     key={i}
                     className="flex items-start gap-2"
@@ -77,7 +96,18 @@ const ContactUs = () => {
                       <p className="text-xs font-medium text-gray-900 mb-1">
                         {label}
                       </p>
-                      <p className="text-xs text-gray-600">{value}</p>
+                      {href ? (
+                        <a
+                          href={href}
+                          target={label === "Website" ? "_blank" : "_self"}
+                          rel="noopener noreferrer"
+                          className="text-xs text-blue-600 hover:underline"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="text-xs text-gray-600">{value}</p>
+                      )}
                     </div>
                   </motion.div>
                 ))}
@@ -115,16 +145,7 @@ const ContactUs = () => {
                 Contact Information
               </h3>
               <div className="space-y-6">
-                {[
-                  { icon: Phone, label: "Phone", value: "+94 77 123 4567" },
-                  { icon: Mail, label: "Email", value: "info@quickdocs.lk" },
-                  { icon: Globe, label: "Website", value: "www.quickdocs.lk" },
-                  {
-                    icon: MapPin,
-                    label: "Location",
-                    value: "Colombo, Sri Lanka",
-                  },
-                ].map(({ icon: Icon, label, value }, i) => (
+                {contacts.map(({ icon: Icon, label, value, href }, i) => (
                   <motion.div
                     key={i}
                     className="flex items-center gap-4"
@@ -137,7 +158,18 @@ const ContactUs = () => {
                       <p className="text-sm font-medium text-gray-900 mb-1">
                         {label}
                       </p>
-                      <p className="text-gray-600">{value}</p>
+                      {href ? (
+                        <a
+                          href={href}
+                          target={label === "Website" ? "_blank" : "_self"}
+                          rel="noopener noreferrer"
+                          className="text-gray-600 hover:text-blue-600 hover:underline"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="text-gray-600">{value}</p>
+                      )}
                     </div>
                   </motion.div>
                 ))}

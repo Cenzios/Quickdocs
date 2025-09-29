@@ -217,12 +217,12 @@ const Footer = () => {
               </h4>
               <ul className="space-y-2 md:space-y-3">
                 {[
-                  "Home",
-                  "Services",
-                  "Why Choose us",
-                  "Process",
-                  "FAQs",
-                  "Contact Us",
+                  { name: "Home", href: "#home" },
+                  { name: "Services", href: "#services" },
+                  { name: "Why Choose us", href: "#choose-us" },
+                  { name: "Process", href: "#process" },
+                  { name: "FAQs", href: "#faqs" },
+                  { name: "Contact Us", href: "#contact" },
                 ].map((link, i) => (
                   <motion.li
                     key={i}
@@ -230,10 +230,10 @@ const Footer = () => {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-gray-300 hover:text-white transition-colors text-xs md:text-base"
                     >
-                      {link}
+                      {link.name}
                     </a>
                   </motion.li>
                 ))}
