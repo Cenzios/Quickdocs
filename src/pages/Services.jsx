@@ -84,16 +84,16 @@ const Services = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Why Choose QuickDocs ?
+          <h2 className="text-[18px] md:text-3xl font-bold text-gray-900 mb-4">
+            Why Choose QuickDocs?
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+          <p className="text-[14px] md:text-base text-gray-600 max-w-2xl mx-auto">
             We combine expertise, customization, and efficiency to deliver
             exceptional results.
           </p>
         </motion.div>
 
-        {/* Desktop Grid */}
+        {/* ---------- Desktop View ---------- */}
         <motion.div
           className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
@@ -120,12 +120,12 @@ const Services = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-[20px] font-semibold text-gray-900 mb-4">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 text-[16px] leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -133,7 +133,7 @@ const Services = () => {
           })}
         </motion.div>
 
-        {/* Mobile Layout */}
+        {/* ---------- Mobile View ---------- */}
         <motion.div
           className="md:hidden grid grid-cols-2 gap-4"
           variants={containerVariants}
@@ -155,17 +155,17 @@ const Services = () => {
                     whileHover={{ rotate: 10, scale: 1.1 }}
                     className="p-3 bg-blue-50 rounded-xl"
                   >
-                    <IconComponent className="w-6 h-6 text-blue-600" />
+                    <IconComponent className="w-6 h-5 text-blue-600" />
                   </motion.div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-sm font-semibold text-gray-900 mb-2 leading-tight">
+                <h3 className="text-[14px] font-semibold text-gray-900 mb-2 leading-tight">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 text-xs leading-relaxed">
+                <p className="text-gray-600 text-[12px] leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
