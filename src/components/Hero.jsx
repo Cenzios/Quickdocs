@@ -27,12 +27,12 @@ const float = {
 const Hero = () => {
   return (
     <>
-      {/* Desktop Layout */}
-      <div className="hidden md:flex min-h-screen relative px-12 pt-12 overflow-hidden">
+      {/* Desktop/Tablet Layout */}
+      <div className="hidden md:flex min-h-screen relative px-6 lg:px-12 xl:px-16 pt-12 overflow-hidden">
         {/* Left side */}
-        <div className="flex-[0.45] flex flex-col justify-center">
+        <div className="flex-[0.45] flex flex-col justify-center pr-4 lg:pr-8">
           <motion.h1
-            className="text-5xl font-bold text-white mb-6 leading-tight"
+            className="text-[36px] lg:text-[45px] xl:text-[50px] 2xl:text-[56px] font-bold text-white mb-6 leading-tight"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
@@ -46,7 +46,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-white text-lg mb-8"
+            className="text-white text-[14px] lg:text-[15px] xl:text-[16px] mb-8 max-w-lg"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
@@ -57,26 +57,27 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex gap-4 mb-12"
+            className="flex flex-wrap gap-3 lg:gap-4 mb-12"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={3}
           >
-            <motion.button
+            <motion.a
+              href="#contact-us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#0A51B0] px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+              className="bg-white text-[#0A51B0] px-4 lg:px-6 py-2.5 lg:py-3 rounded-lg text-[14px] lg:text-[16px] hover:bg-blue-50 transition-colors"
             >
               Get Started Today
-            </motion.button>
+            </motion.a>
             <motion.a
               href="#services"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors"
+              className="border-2 border-white text-white px-4 lg:px-6 py-2.5 lg:py-3 rounded-lg text-[14px] lg:text-[16px] hover:bg-white/10 transition-colors"
             >
-              View Our Service
+              View Our Services
             </motion.a>
           </motion.div>
 
@@ -89,7 +90,7 @@ const Hero = () => {
 
           {/* Stats section */}
           <motion.div
-            className="flex justify-between items-end max-w-2xl"
+            className="flex justify-between items-end max-w-2xl gap-4"
             initial="hidden"
             animate="visible"
           >
@@ -106,10 +107,12 @@ const Hero = () => {
                   variants={fadeUp}
                   custom={i + 4}
                 >
-                  <div className="text-2xl font-bold text-white mb-1">
+                  <div className="text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-white mb-1">
                     {num}
                   </div>
-                  <div className="text-white text-sm">{text}</div>
+                  <div className="text-white text-[13px] lg:text-[14px] xl:text-[15px]">
+                    {text}
+                  </div>
                 </motion.div>
               );
             })}
@@ -118,71 +121,78 @@ const Hero = () => {
 
         {/* Right side */}
         <motion.div
-          className="flex-[0.65] relative flex items-end justify-center min-h-[600px]"
+          className="flex-[0.55] relative flex items-center justify-center min-h-[500px] lg:min-h-[600px] xl:min-h-[650px]"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          {/* Main character image */}
+          {/* Main character image - Responsive sizing */}
           <motion.img
             src={panaImage}
-            alt=""
-            className="w-[300px] max-w-full relative z-10 left-20"
+            className="w-[240px] md:w-[260px] lg:w-[300px] xl:w-[330px] 2xl:w-[280px] max-w-full relative z-10 top-10"
             variants={float}
             animate="animate"
           />
 
-          {/* Frame 1 */}
+          {/* Frame 1 - Clean and credible */}
           <motion.div
-            className="absolute top-15 -right-5 z-20"
+            className="absolute top-4 md:top-8 lg:top-12 xl:top-15 right-0 md:right-2 lg:right-8 xl:-right-5 z-20"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={5}
           >
             <div className="relative inline-block">
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-2xl shadow-lg">
-                <img src={star} alt="" className="w-5 h-5" />
-                <span className="text-[#000000] font-medium">
+              <div className="inline-flex items-center gap-1.5 lg:gap-2 px-3 md:px-4 lg:px-5 xl:px-6 py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-white rounded-xl lg:rounded-2xl shadow-lg">
+                <img
+                  src={star}
+                  alt=""
+                  className="w-3.5 md:w-4 lg:w-5 h-3.5 md:h-4 lg:h-5"
+                />
+                <span className="text-[#000000] text-[10px] md:text-[11px] lg:text-[12px] xl:text-[13px] font-medium whitespace-nowrap">
                   Clean and credible
                 </span>
               </div>
               <motion.img
                 src={arrowImage}
                 alt=""
-                className="absolute -bottom-[90px] right-[120px] w-[70px] h-auto -rotate-12"
+                className="absolute -bottom-[50px] md:-bottom-[60px] lg:-bottom-[80px] xl:-bottom-[90px] right-[70px] md:right-[80px] lg:right-[100px] xl:right-[120px] w-[45px] md:w-[50px] lg:w-[65px] xl:w-[70px] h-auto -rotate-12"
                 animate={float.animate}
               />
             </div>
           </motion.div>
 
-          {/* Frame 2 */}
+          {/* Frame 2 - Professional MBA-level */}
           <motion.div
-            className="absolute top-40 -left-5 z-20"
+            className="absolute top-28 md:top-32 lg:top-36 xl:top-40 left-0 md:left-2 lg:left-4 xl:-left-5 z-20"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={6}
           >
-            <div className="flex items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-2xl shadow-lg">
-                <img src={hat} alt="" className="w-5 h-5" />
-                <span className="text-[#000000] font-medium">
+            <div className="flex items-center gap-2 lg:gap-3">
+              <div className="inline-flex items-center gap-1.5 lg:gap-2 px-3 md:px-4 lg:px-5 xl:px-6 py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-white rounded-xl lg:rounded-2xl shadow-lg">
+                <img
+                  src={hat}
+                  alt=""
+                  className="w-3.5 md:w-4 lg:w-5 h-3.5 md:h-4 lg:h-5"
+                />
+                <span className="text-[#000000] text-[10px] md:text-[11px] lg:text-[12px] xl:text-[13px] font-medium whitespace-nowrap">
                   Professional, MBA-level Expertise
                 </span>
               </div>
               <motion.img
                 src={arrowImage}
                 alt=""
-                className="w-[70px] h-auto rotate-[250deg]"
+                className="w-[45px] md:w-[50px] lg:w-[65px] xl:w-[70px] h-auto rotate-[250deg]"
                 animate={float.animate}
               />
             </div>
           </motion.div>
 
-          {/* Frame 3 */}
+          {/* Frame 3 - Fast and Reliable */}
           <motion.div
-            className="absolute bottom-50 left-10 z-20"
+            className="absolute bottom-32 md:bottom-36 lg:bottom-44 xl:bottom-50 left-2 md:left-4 lg:left-6 xl:left-10 z-20"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
@@ -192,12 +202,16 @@ const Hero = () => {
               <motion.img
                 src={arrowImage}
                 alt=""
-                className="absolute -top-[80px] left-[120px] w-[70px] h-auto rotate-[220deg]"
+                className="absolute -top-[45px] md:-top-[55px] lg:-top-[70px] xl:-top-[80px] left-[70px] md:left-[80px] lg:left-[100px] xl:left-[120px] w-[45px] md:w-[50px] lg:w-[65px] xl:w-[70px] h-auto rotate-[220deg]"
                 animate={float.animate}
               />
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-2xl shadow-lg">
-                <img src={clock} alt="" className="w-5 h-5" />
-                <span className="text-[#000000] font-medium">
+              <div className="inline-flex items-center gap-1.5 lg:gap-2 px-3 md:px-4 lg:px-5 xl:px-6 py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-white rounded-xl lg:rounded-2xl shadow-lg">
+                <img
+                  src={clock}
+                  alt=""
+                  className="w-3.5 md:w-4 lg:w-5 h-3.5 md:h-4 lg:h-5"
+                />
+                <span className="text-[#000000] text-[10px] md:text-[11px] lg:text-[12px] xl:text-[13px] font-medium whitespace-nowrap">
                   Fast and Reliable Delivery
                 </span>
               </div>
@@ -206,7 +220,7 @@ const Hero = () => {
 
           {/* Bulb image */}
           <motion.div
-            className="absolute top-30 right-70 z-20"
+            className="absolute top-16 md:top-20 lg:top-24 xl:top-30 right-32 md:right-40 lg:right-56 xl:right-70 z-20"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
@@ -215,14 +229,14 @@ const Hero = () => {
             <motion.img
               src={bulbImage}
               alt=""
-              className="w-20 h-20"
+              className="w-[45px] md:w-[50px] lg:w-[60px] xl:w-[74px] h-auto"
               animate={float.animate}
             />
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Mobile Layout */}
+      {/* Mobile Layout - No changes */}
       <motion.div
         className="md:hidden min-h-screen px-4 py-6 pt-18 flex flex-col"
         initial="hidden"
@@ -230,12 +244,12 @@ const Hero = () => {
       >
         {/* Title */}
         <motion.div className="mb-6" variants={fadeUp} custom={1}>
-          <h1 className="text-2xl text-center font-bold text-white leading-tight mb-4">
+          <h1 className="text-[20px] text-center font-bold text-white leading-tight mb-4">
             Your Complete
             <br />
             Document Solution
           </h1>
-          <p className="text-white text-center text-sm leading-relaxed mb-6">
+          <p className="text-white text-center text-[10px] leading-relaxed mb-6">
             Professional business proposals, pitch decks, and reports crafted by
             MBA-level experts to elevate your business success
           </p>
@@ -335,13 +349,15 @@ const Hero = () => {
           variants={fadeUp}
           custom={7}
         >
-          <motion.button
-            className="w-full bg-white text-blue-600 py-3 px-6 rounded-lg font-medium text-sm"
+          <motion.a
+            href="#contact-us"
+            className="w-full bg-white text-blue-600 py-3 px-6 rounded-lg font-medium text-sm text-center inline-block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Get Started Today
-          </motion.button>
+          </motion.a>
+
           <motion.a
             href="#services"
             className="w-full border-2 border-white text-white py-3 px-6 rounded-lg font-medium text-sm text-center block"
