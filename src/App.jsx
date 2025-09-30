@@ -8,6 +8,7 @@ import Faq from "./pages/Faq";
 import Payment from "./pages/Payment";
 import ContactUs from "./pages/ContactUs";
 import Footer from "./components/Footer";
+import FloatingCallButton from "./components/FloatingCallButton";
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
         </section>
       </div>
       <Footer />
+      <FloatingCallButton />
     </div>
   );
 };
