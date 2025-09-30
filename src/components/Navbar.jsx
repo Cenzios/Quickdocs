@@ -7,6 +7,7 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Nav items (IDs used for scrolling)
   const navItems = [
     "home",
     "services",
@@ -15,6 +16,16 @@ const Navbar = () => {
     "faq",
     "contact-us",
   ];
+
+  // Custom display labels for nav items
+  const navLabels = {
+    home: "Home",
+    services: "Services",
+    "choose-us": "Why Choose Us",
+    process: "Process",
+    faq: "FAQs",
+    "contact-us": "Contact Us",
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,7 +105,7 @@ const Navbar = () => {
                 activeLink === item ? "after:w-full" : "after:w-0"
               } after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-white after:transition-all after:duration-300`}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1).replace("-", " ")}
+              {navLabels[item]}
             </motion.a>
           ))}
         </nav>
@@ -137,8 +148,7 @@ const Navbar = () => {
                       : "font-medium"
                   }`}
                 >
-                  {item.charAt(0).toUpperCase() +
-                    item.slice(1).replace("-", " ")}
+                  {navLabels[item]}
                 </motion.a>
               ))}
             </motion.div>
