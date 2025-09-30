@@ -110,7 +110,7 @@ const Process = () => {
                 >
                   {/* Icon circle */}
                   <motion.div
-                    className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 shadow-md"
+                    className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-full bg-[#004AAD] shadow-md"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{
@@ -123,10 +123,10 @@ const Process = () => {
                   </motion.div>
 
                   {/* Step Text */}
-                  <h3 className="text-[24px] font-semibold text-gray-900 mb-2">
+                  <h3 className="text-[18px] font-semibold text-gray-900 mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 text-[20px] leading-relaxed">
+                  <p className="text-gray-600 text-[16px] leading-relaxed">
                     {step.description}
                   </p>
 
@@ -164,7 +164,7 @@ const Process = () => {
           viewport={{ once: true }}
         >
           {/* Solid Blue Vertical Line */}
-          <div className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-1 bg-blue-600"></div>
+          <div className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-1 bg-[#004AAD]"></div>
 
           {/* Steps */}
           {steps.map((step, index) => (
@@ -197,7 +197,7 @@ const Process = () => {
 
               {/* Step Icon on Line */}
               <motion.div
-                className="absolute left-1/2 transform -translate-x-1/2 -top-2 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 shadow-md z-10"
+                className="absolute left-1/2 transform -translate-x-1/2 -top-2 flex items-center justify-center w-10 h-10 rounded-full bg-[#004AAD] shadow-md z-10"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{
