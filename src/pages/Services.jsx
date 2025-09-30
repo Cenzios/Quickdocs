@@ -85,11 +85,11 @@ const Services = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-[18px] md:text-3xl font-bold text-gray-900 mb-4">
-            Why Choose QuickDocs?
+            Our Professional Services
           </h2>
           <p className="text-[14px] md:text-base text-gray-600 max-w-2xl mx-auto">
-            We combine expertise, customization, and efficiency to deliver
-            exceptional results.
+            From business proposals to investor documents, we create tailored
+            solutions for every need.
           </p>
         </motion.div>
 
@@ -115,7 +115,7 @@ const Services = () => {
                     whileHover={{ rotate: 10, scale: 1.1 }}
                     className="p-4 bg-blue-50 rounded-2xl"
                   >
-                    <IconComponent className="w-8 h-8 text-blue-600" />
+                    <IconComponent className="w-8 h-8 text-[#004AAD]" />
                   </motion.div>
                 </div>
 
@@ -155,7 +155,7 @@ const Services = () => {
                     whileHover={{ rotate: 10, scale: 1.1 }}
                     className="p-3 bg-blue-50 rounded-xl"
                   >
-                    <IconComponent className="w-6 h-5 text-blue-600" />
+                    <IconComponent className="w-6 h-5 text-[#004AAD]" />
                   </motion.div>
                 </div>
 
