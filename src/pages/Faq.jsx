@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import amico from "../assets/amico.png";
 
@@ -49,42 +49,42 @@ const Faq = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-black mb-4">
+          <h2 className="text-[18px] sm:text-[36px] font-bold text-black mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="lg:hidden text-gray-600 text-sm">
+
+          <p className="lg:hidden text-gray-600 text-[14px]">
             Find solutions to your top questions
           </p>
         </motion.div>
 
-        {/* Mobile Illustration - Only on mobile */}
-        <motion.div
-          className="lg:hidden flex justify-center mb-8"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "backOut" }}
-          viewport={{ once: true }}
-        >
-          <div className="w-64 h-48">
-            <img
-              src={amico}
-              alt="FAQ Illustration"
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </motion.div>
-
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - FAQ Accordion */}
+        {/* ======================= MOBILE VIEW ======================= */}
+        <div className="block lg:hidden">
+          {/* Mobile Illustration */}
           <motion.div
-            className="order-2 lg:order-1"
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "backOut" }}
+            viewport={{ once: true }}
+          >
+            <div className="w-64 h-48">
+              <img
+                src={amico}
+                alt="FAQ Illustration"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </motion.div>
+
+          {/* FAQ Accordion */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <div className="space-y-6 -mt-8">
+            <div className="space-y-6">
               <hr className="border-t border-gray-300 my-4" />
               {faqData.map((item, index) => (
                 <div key={index}>
@@ -92,7 +92,7 @@ const Faq = () => {
                     onClick={() => toggleItem(index)}
                     className="w-full text-left flex items-center justify-between py-2 hover:text-blue-600 transition-colors"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 pr-4">
+                    <h3 className="text-[14px] font-semibold text-gray-900 pr-4">
                       {item.question}
                     </h3>
                     <motion.div
@@ -117,7 +117,84 @@ const Faq = () => {
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 text-[12px] leading-relaxed">
+                          {item.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <hr className="border-t border-gray-300 my-4" />
+                </div>
+              ))}
+            </div>
+
+            {/* Contact Section */}
+            <motion.div
+              className="mt-10 pt-6"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-[12px] text-gray-600 mb-2">
+                Ask any questions
+              </p>
+              <a
+                href="tel:+94771234567"
+                className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-[14px] font-medium"
+              >
+                <Phone className="w-4 h-4" />
+                +94 77 123 4567
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* ======================= DESKTOP VIEW ======================= */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left Side - FAQ Accordion */}
+          <motion.div
+            className="order-2 lg:order-1"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <div className="space-y-6 -mt-8">
+              <hr className="border-t border-gray-300 my-4" />
+              {faqData.map((item, index) => (
+                <div key={index}>
+                  <button
+                    onClick={() => toggleItem(index)}
+                    className="w-full text-left flex items-center justify-between py-2 hover:text-blue-600 transition-colors"
+                  >
+                    <h3 className="text-[24px] font-semibold text-gray-900 pr-4">
+                      {item.question}
+                    </h3>
+                    <motion.div
+                      animate={{ rotate: openItems.includes(index) ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0"
+                    >
+                      {openItems.includes(index) ? (
+                        <Minus className="w-5 h-5 text-gray-600" />
+                      ) : (
+                        <Plus className="w-5 h-5 text-gray-600" />
+                      )}
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence>
+                    {openItems.includes(index) && (
+                      <motion.div
+                        className="pl-1"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      >
+                        <p className="text-gray-600 text-[16px] leading-relaxed">
                           {item.answer}
                         </p>
                       </motion.div>
@@ -139,15 +216,16 @@ const Faq = () => {
             >
               <p className="text-sm text-gray-600 mb-2">Ask any questions</p>
               <a
-                href="mailto:info@quickdocs.lk"
-                className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                href="tel:+94771234567"
+                className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium"
               >
-                info@quickdocs.lk
+                <Phone className="w-4 h-4" />
+                +94 77 123 4567
               </a>
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Illustration - Only on desktop */}
+          {/* Right Side - Illustration */}
           <motion.div
             className="hidden lg:flex justify-center lg:justify-end order-1 lg:order-2"
             initial={{ opacity: 0, x: 60 }}
