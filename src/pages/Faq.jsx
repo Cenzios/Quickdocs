@@ -169,7 +169,7 @@ const Faq = () => {
                     onClick={() => toggleItem(index)}
                     className="w-full text-left flex items-center justify-between py-2 hover:text-blue-600 transition-colors"
                   >
-                    <h3 className="text-[24px] font-semibold text-gray-900 pr-4">
+                    <h3 className="text-[18px] font-semibold text-gray-900 pr-4">
                       {item.question}
                     </h3>
                     <motion.div
@@ -194,7 +194,7 @@ const Faq = () => {
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-gray-600 text-[16px] leading-relaxed">
+                        <p className="text-gray-600 text-[15px] leading-relaxed">
                           {item.answer}
                         </p>
                       </motion.div>
@@ -220,7 +220,7 @@ const Faq = () => {
                 className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium"
               >
                 <Phone className="w-4 h-4" />
-                +94 77 123 4567
+                +94 7111 86028
               </a>
             </motion.div>
           </motion.div>
