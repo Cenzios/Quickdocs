@@ -141,11 +141,11 @@ const Faq = () => {
                 Ask any questions
               </p>
               <a
-                href="tel:+94771234567"
+                href="tel:+94711186028"
                 className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-[14px] font-medium"
               >
                 <Phone className="w-4 h-4" />
-                +94 77 123 4567
+                +94 7111 86028
               </a>
             </motion.div>
           </motion.div>
@@ -216,7 +216,7 @@ const Faq = () => {
             >
               <p className="text-sm text-gray-600 mb-2">Ask any questions</p>
               <a
-                href="tel:+94771234567"
+                href="tel:+94711186028"
                 className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium"
               >
                 <Phone className="w-4 h-4" />
