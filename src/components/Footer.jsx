@@ -111,7 +111,7 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
                 <a
-                  href="https://wa.me/94771234567"
+                  href="https://wa.me/94711186028"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
