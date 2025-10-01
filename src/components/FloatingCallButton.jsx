@@ -102,7 +102,7 @@ const FloatingCallButton = () => {
               >
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/94771234567"
+                  href="https://wa.me/94711186028"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 bg-green-50 hover:bg-green-100 rounded-xl transition-all group border border-green-200"
@@ -128,7 +128,7 @@ const FloatingCallButton = () => {
 
                 {/* Phone Call */}
                 <a
-                  href="tel:+94771234567"
+                  href="tel:+947111 86028"
                   className="flex items-center gap-3 p-3 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all group border border-blue-200"
                 >
                   <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
