@@ -94,28 +94,26 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
           >
-            {[
-              "10 +|Project Completed",
-              "98 %|Client Satisfaction",
-              "24 hrs|Average Delivery",
-            ].map((item, i) => {
-              const [num, text] = item.split("|");
-              return (
-                <motion.div
-                  key={i}
-                  className="flex flex-col items-start"
-                  variants={fadeUp}
-                  custom={i + 4}
-                >
-                  <div className="text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-white mb-1">
-                    {num}
-                  </div>
-                  <div className="text-white text-[13px] lg:text-[14px] xl:text-[15px]">
-                    {text}
-                  </div>
-                </motion.div>
-              );
-            })}
+            {["100 %|Client Satisfaction", "24 hrs|Average Delivery"].map(
+              (item, i) => {
+                const [num, text] = item.split("|");
+                return (
+                  <motion.div
+                    key={i}
+                    className="flex flex-col items-start"
+                    variants={fadeUp}
+                    custom={i + 4}
+                  >
+                    <div className="text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-white mb-1">
+                      {num}
+                    </div>
+                    <div className="text-white text-[13px] lg:text-[14px] xl:text-[15px]">
+                      {text}
+                    </div>
+                  </motion.div>
+                );
+              }
+            )}
           </motion.div>
         </div>
 
@@ -244,7 +242,7 @@ const Hero = () => {
       >
         {/* Title */}
         <motion.div className="mb-6" variants={fadeUp} custom={1}>
-          <h1 className="text-[20px] text-center font-bold text-white leading-tight mb-4">
+          <h1 className="text-[24px] text-center font-bold text-white leading-tight mb-4">
             Your Complete
             <br />
             Document Solution
@@ -377,23 +375,21 @@ const Hero = () => {
         />
 
         <motion.div
-          className="grid grid-cols-3 gap-4 text-center px-2"
+          className="grid grid-cols-2 gap-4 text-center px-2"
           initial="hidden"
           animate="visible"
         >
-          {[
-            "10+|Project Completed",
-            "98%|Client Satisfaction",
-            "24 hrs|Average Delivery",
-          ].map((item, i) => {
-            const [num, text] = item.split("|");
-            return (
-              <motion.div key={i} variants={fadeUp} custom={i + 8}>
-                <div className="text-xl font-bold text-white">{num}</div>
-                <div className="text-white text-xs">{text}</div>
-              </motion.div>
-            );
-          })}
+          {["100%|Client Satisfaction", "24 hrs|Average Delivery"].map(
+            (item, i) => {
+              const [num, text] = item.split("|");
+              return (
+                <motion.div key={i} variants={fadeUp} custom={i + 8}>
+                  <div className="text-xl font-bold text-white">{num}</div>
+                  <div className="text-white text-xs">{text}</div>
+                </motion.div>
+              );
+            }
+          )}
         </motion.div>
       </motion.div>
     </>
