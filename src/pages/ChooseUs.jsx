@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GraduationCap, Sparkles, Target, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Group from "../assets/Group.png";
@@ -27,6 +27,8 @@ const cardVariants = {
 
 const ChooseUs = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const features = [
     {
@@ -54,6 +56,36 @@ const ChooseUs = () => {
         "Quick turnaround times without compromising on quality or attention to details.",
     },
   ];
+
+  // Auto-advance carousel every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % features.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [features.length]);
+
+  // Handle touch swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Swipe left
+      setCurrentSlide((prev) => (prev + 1) % features.length);
+    }
+
+    if (touchStart - touchEnd < -50) {
+      // Swipe right
+      setCurrentSlide((prev) => (prev - 1 + features.length) % features.length);
+    }
+  };
 
   return (
     <section
@@ -90,14 +122,19 @@ const ChooseUs = () => {
           />
         </div>
 
-        <div className="px-0 mb-8">
+        <div
+          className="px-0 mb-8"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.4 }}
               className="bg-white rounded-2xl shadow-lg p-6 text-center"
             >
               <div className="flex justify-center mb-4">
@@ -122,8 +159,8 @@ const ChooseUs = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentSlide ? "bg-blue-600" : "bg-gray-300"
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentSlide ? "bg-blue-600 w-8" : "bg-gray-300 w-2"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
