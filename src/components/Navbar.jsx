@@ -85,9 +85,12 @@ const Navbar = () => {
           transition={{ duration: 0.5 }}
         >
           <img src={logo} alt="Logo" className="w-8 h-8" />
-          <div className="text-white">
-            <div className="font-semibold text-lg">Quick Docs</div>
-            <div className="text-xs text-blue-200">Sri Lanka</div>
+          <div className="text-white leading-tight">
+            {/* Smaller on mobile, larger on desktop */}
+            <div className="font-semibold text-base sm:text-lg">Quick Docs</div>
+            <div className="text-[10px] sm:text-xs text-blue-200">
+              Sri Lanka
+            </div>
           </div>
         </motion.div>
 
