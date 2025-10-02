@@ -28,7 +28,7 @@ const Hero = () => {
   return (
     <>
       {/* Desktop/Tablet Layout */}
-      <div className="hidden md:flex min-h-screen relative px-6 lg:px-12 xl:px-16 pt-12 overflow-hidden">
+      <div className="hidden md:flex min-h-screen relative px-6 lg:px-12 xl:px-16 pt-12 overflow-hidden ">
         {/* Left side */}
         <div className="flex-[0.45] flex flex-col justify-center pr-4 lg:pr-8">
           <motion.h1
