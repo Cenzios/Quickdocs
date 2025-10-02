@@ -10,6 +10,7 @@ import {
   FileText,
   Mail,
   Phone,
+  MessageCircle,
 } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -57,23 +58,23 @@ const PrivacyPolicy = () => {
       title: "2. How We Use Your Information",
       content: [
         {
-          text: "To provide, maintain, and improve our services.",
+          text: "To communicate with you regarding your requests, orders, or support inquiries — including through WhatsApp.",
         },
-        {
-          text: "To communicate with you regarding your requests, orders, or support inquiries.",
-        },
-        {
-          text: "To process payments and manage accounts securely.",
-        },
-        {
-          text: "To analyze website usage and trends to enhance functionality and user experience.",
-        },
-        {
-          text: "To prevent fraud, enforce our terms, and comply with legal obligations.",
-        },
-        {
-          text: "To send marketing communications, if you have opted in.",
-        },
+        // {
+        //   text: "To communicate with you regarding your requests, orders, or support inquiries.",
+        // },
+        // {
+        //   text: "To process payments and manage accounts securely.",
+        // },
+        // {
+        //   text: "To analyze website usage and trends to enhance functionality and user experience.",
+        // },
+        // {
+        //   text: "To prevent fraud, enforce our terms, and comply with legal obligations.",
+        // },
+        // {
+        //   text: "To send marketing communications, if you have opted in.",
+        // },
       ],
     },
     {
@@ -136,6 +137,9 @@ const PrivacyPolicy = () => {
         },
         {
           text: "To exercise these rights, contact us at Quickdocssrilanka@gmail.com.",
+        },
+        {
+          text: "📱 WhatsApp: +94 7111 86028",
         },
       ],
     },
@@ -329,6 +333,18 @@ const PrivacyPolicy = () => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <span>+94 7111 86028</span>
+                </motion.a>
+                <motion.a
+                  href="https://wa.me/94711186028"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm md:text-base hover:text-blue-200 transition-colors"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="bg-white/20 p-2 rounded-lg">
+                    <MessageCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <span>WhatsApp: +94 7111 86028</span>
                 </motion.a>
               </div>
             </div>

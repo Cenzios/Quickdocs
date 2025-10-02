@@ -10,7 +10,7 @@ import {
   CheckCircle,
   Mail,
   Phone,
-  Globe,
+  MessageCircle,
   User,
 } from "lucide-react";
 import Navbar from "../components/Navbar";
@@ -43,7 +43,7 @@ const TermsConditions = () => {
         { text: "• Reports" },
         { text: "• Pitch decks" },
         { text: "• Profile documents" },
-        { text: "All services are provided online through our platform." },
+        { text: "All services are delivered digitally." },
       ],
     },
     {
@@ -270,15 +270,18 @@ const TermsConditions = () => {
                   </div>
                   <span>+94 7111 86028</span>
                 </motion.a>
-                <motion.div
-                  className="flex items-center gap-3 text-sm md:text-base"
+                <motion.a
+                  href="https://wa.me/94711186028"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm md:text-base hover:text-blue-200 transition-colors"
                   whileHover={{ x: 5 }}
                 >
                   <div className="bg-white/20 p-2 rounded-lg">
-                    <Globe className="w-5 h-5" />
+                    <MessageCircle className="w-5 h-5 text-white" />
                   </div>
-                  <span>QuickDocs Sri Lanka</span>
-                </motion.div>
+                  <span>WhatsApp: +94 7111 86028</span>
+                </motion.a>
               </div>
             </div>
           </motion.div>
