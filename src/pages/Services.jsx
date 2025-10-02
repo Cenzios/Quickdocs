@@ -84,7 +84,7 @@ const Services = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-[18px] md:text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-[20px] md:text-3xl font-bold text-gray-900 mb-4">
             Our Professional Services
           </h2>
           <p className="text-[14px] md:text-base text-gray-600 max-w-2xl mx-auto">

@@ -49,7 +49,7 @@ const Faq = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-[18px] sm:text-[36px] font-bold text-black mb-4">
+          <h2 className="text-[20px] sm:text-[36px] font-bold text-black mb-4">
             Frequently Asked Questions
           </h2>
 

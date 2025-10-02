@@ -59,7 +59,7 @@ const Process = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-[18px] sm:text-3xl font-bold text-gray-900 mb-3">
+        <h2 className="text-[20px] sm:text-3xl font-bold text-gray-900 mb-3">
           Our Simple 6–Step Process
         </h2>
         <p className="text-gray-600 text-[14px] sm:text-base">

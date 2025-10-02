@@ -64,7 +64,7 @@ const Payment = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-[18px] md:text-[36px] font-bold text-gray-900 mb-4">
+          <h2 className="text-[20px] md:text-[36px] font-bold text-gray-900 mb-4">
             Flexible Payment Options
           </h2>
           <p className="text-gray-600 text-[14px] md:text-[20px] mx-auto max-w-md md:max-w-full md:whitespace-nowrap">
