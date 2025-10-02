@@ -100,7 +100,7 @@ const ChooseUs = () => {
         whileInView="show"
         viewport={{ once: true }}
       >
-        <h2 className="text-[18px] md:text-3xl font-bold text-gray-900 mb-4">
+        <h2 className="text-[20px] md:text-3xl font-bold text-gray-900 mb-4">
           Why Choose QuickDocs?
         </h2>
         <p className="text-[14px] md:text-base text-gray-600 max-w-2xl mx-auto">
