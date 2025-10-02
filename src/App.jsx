@@ -1,45 +1,31 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import ChooseUs from "./pages/ChooseUs";
-import Process from "./pages/Process";
-import Faq from "./pages/Faq";
-import Payment from "./pages/Payment";
-import ContactUs from "./pages/ContactUs";
-import Footer from "./components/Footer";
+// App.jsx
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
+import LandingPage from "./pages/LandingPage"; // your single-page with sections
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 import FloatingCallButton from "./components/FloatingCallButton";
 
 const App = () => {
+  useEffect(() => {
+    // initMobileOptimizations();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black text-white scroll-smooth overflow-y-hidden">
-      <Navbar />
-      <div>
-        <section id="home" className="min-h-screen">
-          <Home />
-        </section>
-        <section id="services" className="min-h-screen">
-          <Services />
-        </section>
-        <section id="choose-us" className="min-h-screen">
-          <ChooseUs />
-        </section>
-        <section id="process" className="min-h-screen">
-          <Process />
-        </section>
-        <section id="faq" className="min-h-screen">
-          <Faq />
-        </section>
-        <section id="payment" className="min-h-screen">
-          <Payment />
-        </section>
-        <section id="contact-us" className="min-h-screen">
-          <ContactUs />
-        </section>
-      </div>
-      <Footer />
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        {/* Single page landing with smooth scroll sections */}
+        <Route path="/" element={<LandingPage />}  />
+
+        {/* Standalone extra pages */}
+        <Route path="/privacy-policy" element={<PrivacyPolicy  />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+      </Routes>
       <FloatingCallButton />
-    </div>
+    </Router>
   );
 };
+
 export default App;
