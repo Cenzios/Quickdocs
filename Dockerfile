@@ -19,8 +19,8 @@
     # Copy custom Nginx config for SPA routing
     COPY nginx.conf /etc/nginx/conf.d/default.conf
     
-    # Expose port 8080
-    EXPOSE 8080
+    # Expose port 8082
+    EXPOSE 8082
     
     # Start Nginx
     CMD ["nginx", "-g", "daemon off;"]
